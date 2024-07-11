@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic'
+
+
 import Logo from '@/components/Logo'
 import StatCard from '@/components/StatCard'
 import {columns, Payment} from '@/components/table/columns'
@@ -25,13 +28,13 @@ const Admin = async() => {
                     type="appointments"
                     label="Scheduled appointments"
                     icon="/assets/icons/appointments.svg"
-                    count={appontments.scheduledCount || 0}
+                    count={appontments?.scheduledCount || 0}
                 />
                 <StatCard 
                     type="pending"
                     label="pending appointments"
                     icon="/assets/icons/pending.svg"
-                    count={appontments.pendingCount || 0}
+                    count={appontments?.pendingCount || 0}
                 />
                 <StatCard 
                     type="cancelled"
