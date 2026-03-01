@@ -23,8 +23,8 @@ const Admin = async() => {
         <header className="admin-header items-center">
             <Logo />
             <p className="text-16-semibold">Admin Dashboard</p>
-            <Link href="/admin/patients" className="ml-auto">
-                <Button className="shad-primary-btn">
+            <Link href="/admin/patients">
+                <Button className="shad-primary-btn ml-auto">
                     View All Patients →
                 </Button>
             </Link>
@@ -66,8 +66,6 @@ const Admin = async() => {
                 <h2 className="sub-header">Recent Appointments</h2>
             </section>
             <DataTable data={appontments.documents} columns={columns} />
-
-        </main>
 
         </main>
 
