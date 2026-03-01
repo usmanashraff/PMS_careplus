@@ -110,6 +110,13 @@ const RenderField = ({field, props}: {field: any, props: customProps}) =>{
                     dateFormat={dateFormat ?? 'MM/DD/YYYY'}
                     wrapperClassName="date-picker"
                     timeInputLabel="Time"
+                    minDate={new Date()}
+                    filterDate={(date) => {
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0);
+                      date.setHours(0, 0, 0, 0);
+                      return date >= today;
+                    }}
                     />
 
                 </FormControl>
