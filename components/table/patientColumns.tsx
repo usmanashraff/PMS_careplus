@@ -32,7 +32,13 @@ export const patientColumns: ColumnDef<Patient>[] = [
         <ArrowUpDown className="ml-2 h-4 w-4" />
       </Button>
     ),
-    cell: ({row})=> <p className="text-14-medium">{row.original.name}</p>
+    cell: ({row})=> (
+      <Link href={`/admin/patients/${row.original.$id}`}>
+        <p className="text-14-medium text-green-500 hover:underline cursor-pointer">
+          {row.original.name}
+        </p>
+      </Link>
+    )
   },
   {
     accessorKey: "email",

@@ -17,6 +17,7 @@ import { Doctors } from "@/constants"
 import Image from "next/image"
 import AppointmentDialog from "../AppointmentDialog"
 import { Appointment } from "@/types/appwrite.types"
+import Link from "next/link"
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 export type Payment = {
@@ -35,7 +36,13 @@ export const columns: ColumnDef<Appointment>[] = [
   {
     accessorKey: "patient",
     header: "Patient",
-    cell: ({row})=> <p className="text-14-medium">{row.original.patient.name}</p>
+    cell: ({row})=> (
+      <Link href={`/admin/patients/${row.original.patient.$id}`}>
+        <p className="text-14-medium text-green-500 hover:underline cursor-pointer">
+          {row.original.patient.name}
+        </p>
+      </Link>
+    )
   },
   {
     accessorKey:'status',
