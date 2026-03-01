@@ -58,6 +58,44 @@ export const getUser = async (userId: string): Promise<any> => {
     }
   };
 
+// GET ALL PATIENTS
+export const getAllPatients = async (): Promise<any> => {
+  try {
+    const patients = await databases.listDocuments(
+      process.env.NEXT_PUBLIC_DATABASE_ID!,
+      process.env.NEXT_PUBLIC_PATIENT_COLLECTION_ID!,
+      [Query.orderDesc('$createdAt')]
+    );
+
+    return parseStringify(patients);
+  } catch (error) {
+    console.error(
+      "An error occurred while retrieving all patients:",
+      error
+    );
+    return {message: 'error in getting patients', content:error}
+  }
+};
+
+// GET PATIENT BY ID
+export const getPatientById = async (patientId: string): Promise<any> => {
+  try {
+    const patient = await databases.getDocument(
+      process.env.NEXT_PUBLIC_DATABASE_ID!,
+      process.env.NEXT_PUBLIC_PATIENT_COLLECTION_ID!,
+      patientId
+    );
+
+    return parseStringify(patient);
+  } catch (error) {
+    console.error(
+      "An error occurred while retrieving the patient:",
+      error
+    );
+    return {message: 'error in getting patient', content:error}
+  }
+};
+
 
 
 
